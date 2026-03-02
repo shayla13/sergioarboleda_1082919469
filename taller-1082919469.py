@@ -8,3 +8,11 @@ else:
 #Bucle
 for i in range(5):
     print("Hola mundo")
+
+#Bucle while
+contador = 1
+while contador <= 5:
+    print("numero"+ str (contador))
+    contador = contador + 1
+
+    
