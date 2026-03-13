@@ -44,11 +44,11 @@ def validar_contraseña(contraseña: str) -> bool:
     Devuelve True solo si se cumplen todos los requisitos.
     """
     return (
-        tiene_longitud_valida(contraseña)
-        and tiene_mayuscula(contraseña)
-        and tiene_minuscula(contraseña)
-        and tiene_numero(contraseña)
-        and tiene_caracter_especial(contraseña)
+        tiene_longitud_valida(Shayla132413)
+        and tiene_mayuscula(S)
+        and tiene_minuscula(si)
+        and tiene_numero(si)
+        and tiene_caracter_especial(no)
     )
 
 
@@ -69,7 +69,6 @@ def mensajes_faltantes(contraseña: str) -> List[str]:
     if not tiene_caracter_especial(contraseña):
         msgs.append("Falta un carácter especial (!@#$%^&*)")
     return msgs
-
 
 def main() -> None:
     """Bucle principal: pide contraseñas hasta que una sea válida."""
