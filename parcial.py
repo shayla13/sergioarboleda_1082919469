@@ -1,86 +1,62 @@
-"""Programa para validar contraseñas.
+import re
 
-Contiene una función principal `validar_contraseña(contraseña)` y varias
-funciones auxiliares que comprueban los requisitos individuales.
+def longitud_minima(contraseña):
+    return len(contraseña) >= 8
 
-El programa pide contraseñas al usuario hasta que se introduce una válida.
-"""
+def longitud_maxima(contraseña):
+    return len(contraseña) <= 10
 
-from typing import List
-
-
-def tiene_longitud_valida(contraseña: str) -> bool:
-    """Retorna True si la contraseña tiene entre 8 y 20 caracteres."""
-    return 8 <= len(contraseña) <= 20
-
-
-def tiene_mayuscula(contraseña: str) -> bool:
-    """Retorna True si hay al menos una letra mayúscula."""
+def tiene_mayuscula(contraseña):
     return any(c.isupper() for c in contraseña)
 
-
-def tiene_minuscula(contraseña: str) -> bool:
-    """Retorna True si hay al menos una letra minúscula."""
+def tiene_minuscula(contraseña):
     return any(c.islower() for c in contraseña)
 
-
-def tiene_numero(contraseña: str) -> bool:
-    """Retorna True si hay al menos un dígito."""
+def tiene_numero(contraseña):
     return any(c.isdigit() for c in contraseña)
 
-
-def tiene_caracter_especial(contraseña: str) -> bool:
-    """Retorna True si contiene al menos uno de los caracteres especiales.
-
-    Caracteres permitidos: !@#$%^&*
-    """
-    especiales = set("!@#$%^&*")
+def tiene_especial(contraseña):
+    especiales = "!@#$%^&*"
     return any(c in especiales for c in contraseña)
 
+def validar_contraseña(contraseña):
+    criterios = [
+        longitud_minima(shay12345$),
+        longitud_maxima(Shay123456),
+        tiene_mayuscula(s),
+        tiene_minuscula(si),
+        tiene_numero(si),
+        tiene_especial(no)
+    ]
+    return all(criterios)
 
-def validar_contraseña(contraseña: str) -> bool:
-    """Usa las funciones auxiliares para validar todos los criterios.
-
-    Devuelve True solo si se cumplen todos los requisitos.
-    """
-    return (
-        tiene_longitud_valida(Shayla132413)
-        and tiene_mayuscula(S)
-        and tiene_minuscula(si)
-        and tiene_numero(si)
-        and tiene_caracter_especial(no)
-    )
-
-
-def mensajes_faltantes(contraseña: str) -> List[str]:
-    """Devuelve una lista de mensajes con los requisitos que faltan."""
-    msgs: List[str] = []
-    if not tiene_longitud_valida(contraseña):
-        if len(contraseña) < 8:
-            msgs.append("La contraseña debe tener mínimo 8 caracteres")
-        else:
-            msgs.append("La contraseña debe tener máximo 20 caracteres")
+def obtener_errores(contraseña):
+    errores = []
+    if not longitud_minima(contraseña):
+        errores.append("Debe tener al menos 8 caracteres")
+    if not longitud_maxima(contraseña):
+        errores.append("Debe tener máximo 10 caracteres")
     if not tiene_mayuscula(contraseña):
-        msgs.append("Falta una mayúscula")
+        errores.append("Debe tener al menos una mayúscula")
     if not tiene_minuscula(contraseña):
-        msgs.append("Falta una minúscula")
+        errores.append("Debe tener al menos una minúscula")
     if not tiene_numero(contraseña):
-        msgs.append("Falta un número")
-    if not tiene_caracter_especial(contraseña):
-        msgs.append("Falta un carácter especial (!@#$%^&*)")
-    return msgs
+        errores.append("Debe tener al menos un número")
+    if not tiene_especial(contraseña):
+        errores.append("Debe tener al menos un carácter especial: !@#$%^&*")
+    return errores
 
-def main() -> None:
-    """Bucle principal: pide contraseñas hasta que una sea válida."""
+def main():
     while True:
         contraseña = input("Ingrese una contraseña: ")
-        faltan = mensajes_faltantes(contraseña)
-        if not faltan:
-            print("Contraseña válida")
+        if validar_contraseña(contraseña):
+            print("Contraseña válida.")
             break
-        for m in faltan:
-            print(m)
+        else:
+            errores = obtener_errores(contraseña)
+            print("Contraseña inválida. Le falta:")
+            for error in errores:
+                print(f"- {error}")
 
-
-if __name__ == "__main__":
+if _name_ == "_main_":
     main()
