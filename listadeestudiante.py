@@ -1,13 +1,12 @@
-estudiantes= ["Juan", "María", "Pedro", "Ana", "Luis" , "sergio" , "Sofia", "Diego"]
-estudiantes.append("Miguel")
-estudiantes.append("Lucía") # Agrega "Lucía" al final de la lista
-print(estudiantes) #  ['Juan', 'María', 'Pedro', 'Ana', 'Luis', 'sergio', 'Sofia', 'Diego', 'Miguel', 'Lucía']
+estudiantes = ["Juan", "María", "Xavi","Ana", "camilo","juanes", "adriana","shayla"]
+estudiantes.append("keiner")
+estudiantes.append("marcos") # Agrega "marcos" al final de la lista
+print(estudiantes) # ['Juan', 'María', 'Xavi', 'Ana', 'camilo', 'juanes', 'adriana', 'shayla', 'keiner', 'marcos']
 print (len(estudiantes)) # 10
-if "Ana" in estudiantes:
-    print("Ana está en la lista de estudiantes.")
-    estudiantes.remove("Ana") 
-print(estudiantes) # ['Juan', 'María', 'Pedro', 'Luis', 'sergio', 'Sofia', 'Diego', 'Miguel', 'Lucía']
-print (len(estudiantes)) # 9
-estudiantes. append("Ana") # Agrega "Ana" al final de la lista
-print(estudiantes) # ['Juan', 'María', 'Pedro', 'Luis', 'sergio', 'Sofia', 'Diego', 'Miguel', 'Lucía', 'Ana']
-
+if "María" in estudiantes:
+    print("María está en la lista de estudiantes.")
+estudiantes.remove("camilo")
+print(estudiantes) # ['Juan', 'María', 'Xavi', 'Ana', 'juanes', 'adriana', 'shayla', 'keiner', 'marcos']
+print (len(estudiantes)) # 9 
+estudiantes.append("edwin") # Agrega "edwin" al final de la lista
+print(estudiantes) # ['Juan', 'María', 'Xavi', 'Ana', 'juanes', 'adriana', 'shayla', 'keiner', 'marcos', 'edwin']
