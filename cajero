@@ -1,0 +1,60 @@
+# Saldo inicial
+saldo = 1000
+
+# Bucle principal del cajero
+while True:
+    # Mostrar menú de opciones
+    print("\n" + "="*40)
+    print("        BIENVENIDO AL CAJERO ATM")
+    print("="*40)
+    print(f"Saldo actual: ${saldo:.2f}")
+    print("\n¿Qué desea hacer?")
+    print("1. Ver saldo")
+    print("2. Depositar dinero")
+    print("3. Retirar dinero")
+    print("4. Salir")
+    print("="*40)
+    
+    # Pedir opción al usuario
+    opcion = input("\nIngrese su opción (1-4): ")
+    
+    # Validar que la opción sea correcta
+    if opcion not in ["1", "2", "3", "4"]:
+        print("\n❌ Opción inválida. Intente de nuevo.")
+        continue
+    
+    # Opción 1: Ver saldo
+    if opcion == "1":
+        print(f"\n✓ Su saldo actual es: ${saldo:.2f}")
+    
+    # Opción 2: Depositar dinero
+    elif opcion == "2":
+        try:
+            monto = float(input("\nIngrese el monto a depositar: $"))
+            if monto <= 0:
+                print("\n❌ El monto debe ser mayor a cero.")
+            else:
+                saldo += monto
+                print(f"\n✓ Depósito exitoso. Nuevo saldo: ${saldo:.2f}")
+        except ValueError:
+            print("\n❌ Ingrese un monto válido (número).")
+    
+    # Opción 3: Retirar dinero
+    elif opcion == "3":
+        try:
+            monto = float(input("\nIngrese el monto a retirar: $"))
+            if monto <= 0:
+                print("\n❌ El monto debe ser mayor a cero.")
+            elif monto > saldo:
+                print(f"\n❌ Fondos insuficientes. Saldo disponible: ${saldo:.2f}")
+            else:
+                saldo -= monto
+                print(f"\n✓ Retiro exitoso. Nuevo saldo: ${saldo:.2f}")
+        except ValueError:
+            print("\n❌ Ingrese un monto válido (número).")
+    
+    # Opción 4: Salir
+    elif opcion == "4":
+        print("\n✓ Gracias por usar nuestro cajero. ¡Hasta luego!")
+        break
+    print("opción invalida.intente de nuevo.")
